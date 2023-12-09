@@ -1,5 +1,5 @@
 import React from 'react';
-import head from 'next/head'
+import Head from 'next/head'
 import { Navbar, Footer } from '../components';
 
 const Layout = ({ children }) => {
@@ -7,9 +7,9 @@ const Layout = ({ children }) => {
 
 
     <div className="layout">
-      <head>
+      <Head>
         <title>Shopperz</title>
-      </head>
+      </Head>
       <header>
         <Navbar />
       </header>
