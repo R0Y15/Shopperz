@@ -4,9 +4,10 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { MdLogin } from "react-icons/md";
 import { useStateContext } from '@/context/StateContext';
 import { Cart } from '@/components';
+import Login from './Login';
 
 const Navbar = () => {
-  const { showCart, setShowCart, totalQty } = useStateContext();
+  const { showCart, setShowCart, totalQty, showLogin, setShowLogin } = useStateContext();
 
   return (
     <div className="navbar-container">
@@ -20,9 +21,11 @@ const Navbar = () => {
         <button
           type='button'
           className="cart-icon"
-          onClick=''>
+          onClick={() => { setShowLogin(true) }}>
           <MdLogin />
         </button>
+
+        {showLogin && <Login />}
 
         <button
           type='button'
