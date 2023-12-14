@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
-import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShoppingCart } from 'react-icons/ai';
-import { TiDeleteOutline } from 'react-icons/ti';
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart } from 'react-icons/ai';
+import { TiDelete } from "react-icons/ti";
+import { MdDelete } from "react-icons/md";
 import toast from 'react-hot-toast';
 
 import { useStateContext } from '@/context/StateContext';
@@ -15,13 +16,15 @@ const Cart = () => {
   return (
     <div className="cart-wrapper" ref={cartRef}>
       <div className="cart-container">
-        <button
-          type='button'
-          className="cart-heading"
-          onClick={() => setShowCart(false)}>
-          <AiOutlineLeft />
+        <div className="cart-heading">
           <span className='heading'>Your Cart</span>
-        </button>
+
+          <TiDelete
+            className="exit"
+            onClick={() => setShowCart(false)} />
+        </div>
+        <div className="seperator" />
+
         {cartItems.length < 1 && (
           <div className="empty-cart">
             <AiOutlineShoppingCart size={150} />
@@ -49,20 +52,19 @@ const Cart = () => {
                     type='button'
                     className='remove-item'
                     onClick={() => onremove(item._id)}>
-                    <TiDeleteOutline />
+                    <MdDelete />
                   </button>
                 </div>
               </div>
             </div>
           ))}
           {cartItems.length >= 1 && (
-            <div className="cart-bottom" style={{right: '-22px'}}>
+            <div className="cart-bottom" style={{ right: '-22px' }}>
+              <div className="seperator" />
               <div className="total">
                 <h3>SubTotal ({totalQty} items): ₹{totalPrice}</h3>
                 {/* <button className='remove-all'> Remove All </button> */}
-                <p onClick={() => removeAll() }> Remove All </p>
-              </div>
-              <div>
+                <p onClick={() => removeAll()}> Remove All </p>
                 <button
                   type='button'
                   className='btn'
@@ -78,9 +80,9 @@ const Cart = () => {
               <button
                 type='button'
                 className='btn'
-                style={{left: '-90px', position: 'relative'}}
+                style={{ left: '-90px', position: 'relative' }}
                 onClick={() => { setShowCart(false) }}>
-                Continue Shopping 
+                Continue Shopping
               </button>
             </div>
           )}
