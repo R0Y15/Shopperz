@@ -1,10 +1,12 @@
 import product from "@/sanity_shopperz/schemas/product";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import toast from "react-hot-toast";
+import getStripe from '@/lib/getStripe';
 
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
+    const [showContactUs, setShowContactUs] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [showCart, setShowCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
@@ -92,6 +94,29 @@ export const StateContext = ({ children }) => {
         });
     }
 
+    const handleBuy = async () => {
+        const stripe = await getStripe();
+
+        const response = await fetch('/api/stripe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify( cartItems )
+        });
+
+        if (response.statusCode === 500) return;
+
+        const data = await response.json();
+        toast.loading('Redirecting to Checkout Page...');
+
+        if (data.id) {
+            stripe.redirectToCheckout({ sessionId: data.id });
+        } else {
+            console.error('No session ID returned from the server');
+        }
+    }
+
     return (
         <Context.Provider
             value={{
@@ -108,7 +133,13 @@ export const StateContext = ({ children }) => {
                 onAdd,
                 toggleCartItemQuantity,
                 onremove,
-                removeAll
+                removeAll,
+                handleBuy,
+                setTotalPrice,
+                setCartItems,
+                setTotalQty,
+                showContactUs,
+                setShowContactUs
             }}>
             {children}
         </Context.Provider>

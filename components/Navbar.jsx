@@ -2,12 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { MdLogin } from "react-icons/md";
+import { TbHelpOctagon } from "react-icons/tb";
 import { useStateContext } from '@/context/StateContext';
-import { Cart } from '@/components';
+import { Cart, ContactUs } from '@/components';
 import Login from './Login';
 
 const Navbar = () => {
-  const { showCart, setShowCart, totalQty, showLogin, setShowLogin } = useStateContext();
+  const { showCart, setShowCart, totalQty, showLogin, setShowLogin, showContactUs, setShowContactUs } = useStateContext();
 
   return (
     <div className="navbar-container">
@@ -17,15 +18,13 @@ const Navbar = () => {
         </Link>
       </p>
 
-      <div className='nav-btns'> 
+      <div className='nav-btns'>
         <button
           type='button'
           className="cart-icon"
           onClick={() => { setShowLogin(true) }}>
           <MdLogin />
         </button>
-
-        {showLogin && <Login />}
 
         <button
           type='button'
@@ -36,8 +35,17 @@ const Navbar = () => {
             {totalQty}
           </span>
         </button>
+
+        <button
+          type='button'
+          className="cart-icon"
+          onClick={() => { setShowContactUs(true) }}>
+          <TbHelpOctagon />
+        </button>
       </div>
 
+      {showContactUs && <ContactUs />}
+      {showLogin && <Login />}
       {showCart && <Cart />}
     </div>
   )

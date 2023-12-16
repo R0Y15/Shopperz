@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import Link from 'next/link';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart } from 'react-icons/ai';
 import { TiDelete } from "react-icons/ti";
 import { MdDelete } from "react-icons/md";
@@ -7,11 +6,34 @@ import toast from 'react-hot-toast';
 
 import { useStateContext } from '@/context/StateContext';
 import { urlFor } from '@/lib/client';
-import product from '@/sanity_shopperz/schemas/product';
+import getStripe from '@/lib/getStripe';
 
 const Cart = () => {
   const cartRef = useRef();
   const { totalPrice, totalQty, cartItems, setShowCart, toggleCartItemQuantity, onremove, removeAll } = useStateContext();
+
+  const handleBuy = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify( cartItems )
+    });
+
+    if (response.statusCode === 500) return;
+
+    const data = await response.json();
+    toast.loading('Redirecting to Checkout Page...');
+
+    if (data.id) {
+      stripe.redirectToCheckout({ sessionId: data.id });
+    } else {
+      console.error('No session ID returned from the server');
+    }
+  }
 
   return (
     <div className="cart-wrapper" ref={cartRef}>
@@ -68,7 +90,7 @@ const Cart = () => {
                 <button
                   type='button'
                   className='btn'
-                  onClick=''>
+                  onClick={() => { handleBuy() }}>
                   Buy Now
                 </button>
               </div>

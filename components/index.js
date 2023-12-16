@@ -5,3 +5,5 @@ export { default as HeroBanner } from './HeroBanner';
 export { default as Layout } from './Layout';
 export { default as Navbar } from './Navbar';
 export { default as Product } from './Product';
+export { default as SiteLoader } from './SiteLoader';
+export { default as ContactUs } from './ContactUs';
