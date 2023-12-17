@@ -838,6 +838,11 @@ span.text-red {
   flex-direction: column;
 }
 
+.success .sprt-btn{
+  color: #f02d34;
+  cursor: pointer;
+}
+
 .success .icon {
   color: green;
   font-size: 50px;
@@ -1068,7 +1073,7 @@ span.text-red {
   text-shadow: 1px 1px 30px #324d67;
 }
 
-.spl-txt{
+.spl-txt {
   text-shadow: 1px 1px 30px #f02d34;
   color: #f02d34;
 }
@@ -1105,16 +1110,17 @@ span.text-red {
   text-align: center;
   font-weight: 600;
   font-size: 24px;
-  justify-content: space-evenly;
+  justify-content: center;
   display: flex;
   align-items: center;
-  left: 50px;
+  left: 38px;
+  gap: 45px;
   position: relative;
 }
 
 .contact-us-details {
   margin-top: 20px;
-  top: 10%;
+  top: 30px;
   position: relative;
 }
 
@@ -1126,32 +1132,48 @@ span.text-red {
 }
 
 .contact-form label {
-  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #324d67;
+  margin-bottom: 5px;
+}
+
+.contact-form button {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f02d34;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-}
-
-.contact-form input[type="submit"] {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  transition-duration: 0.4s;
-  cursor: pointer;
+  font-weight: 400;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
 }
 
-.contact-form input[type="submit"]:hover {
-  background-color: #45a049;
+.contact-form textarea{
+  height: 150px;
 }
 
+.email-sent {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 7px;
+}
+
+.email-sent-icon {
+  position: relative;
+  top: 3px;
+}

@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
   }, []);
 
   if (loading) {
-    // return <SiteLoader />;
+    return <SiteLoader />;
   }
 
   return (

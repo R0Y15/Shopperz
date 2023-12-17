@@ -19,12 +19,13 @@ const Navbar = () => {
       </p>
 
       <div className='nav-btns'>
-        <button
+        {/* to be enabled when login feture is added */}
+        {/* <button
           type='button'
           className="cart-icon"
           onClick={() => { setShowLogin(true) }}>
           <MdLogin />
-        </button>
+        </button> */}
 
         <button
           type='button'
@@ -45,7 +46,7 @@ const Navbar = () => {
       </div>
 
       {showContactUs && <ContactUs />}
-      {showLogin && <Login />}
+      {/* {showLogin && <Login />} */}
       {showCart && <Cart />}
     </div>
   )

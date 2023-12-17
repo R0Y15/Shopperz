@@ -14,7 +14,7 @@ const success = () => {
     }, []);
 
 
-    const { setCartItems, setTotalPrice, setTotalQty } = useStateContext();
+    const { setCartItems, setTotalPrice, setTotalQty, setShowContactUs } = useStateContext();
 
     return (
         <div className="success-wrapper">
@@ -28,11 +28,7 @@ const success = () => {
                     <button className="btn">Continue Shopping</button>
                 </Link>
                 <p className="description">Incase of any issues, please contact the
-                    <a
-                        className='email'
-                        href="mailto:order@example.com">
-                        support
-                    </a>
+                    <span className='sprt-btn' onClick={() => setShowContactUs(true)}> Support </span>
                 </p>
             </div>
         </div>
