@@ -4,7 +4,7 @@
 
 This Site was developed using Next.js, Sanity.io, stripe and EmailJS. This is a fully functional e-commerce site with a contact form and a cart system. The site is fully responsive and has a great user experience. The site is deployed on Vercel. For a hands-on experience, you can visit the site using the link below.
 
-Link to Site: https://shopperz-r0y15.vercel.app/
+Link to Site: https://shopperz-sigma.vercel.app
 
 <p align='center'>
     <img src="https://i.postimg.cc/c4hK90dB/mediamodifier-image.jpg" />
