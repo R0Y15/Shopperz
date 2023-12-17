@@ -9,9 +9,16 @@
  * https://github.com/sanity-io/next-sanity
  */
 
+// pages/studio/[[...index]].jsx
+import React from 'react';
+import Layout from '../../components/Layout';
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../../sanity.config'
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return (
+    <Layout>
+      <NextStudio config={config} />
+    </Layout>
+  );
 }
