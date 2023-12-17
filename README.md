@@ -1,7 +1,8 @@
 # Shopperz
 
 All new shopping experience, A fresh take on online shopping and experience the difference.
-Link to Site: https://shopperz-r0y15.vercel.app/
+
+### Link to Site: https://shopperz-r0y15.vercel.app/
 
 <p align='center'>
     <img src="https://i.postimg.cc/c4hK90dB/mediamodifier-image.jpg" />
